@@ -1,11 +1,11 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import "package:shared_preferences/shared_preferences.dart";
 import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/services.dart';
 
@@ -14,7 +14,7 @@ import 'date_picker.dart';
 import 'time_picker.dart';
 
 void main()=> runApp(MaterialApp(
-  home:Home()
+    home:Home()
 )
 
 );
@@ -34,6 +34,9 @@ class _HomeState extends State<Home> {
   String date_selected='';
   String time='';
   GlobalKey _scaffold=GlobalKey();
+  bool loading=false;
+  String format= new DateFormat('dd-mm-yyyy').format(DateTime.now().subtract(Duration(days: 1)));
+  DateFormat inputFormat=DateFormat("dd-mm-yyyy");
 
 
 
@@ -46,30 +49,56 @@ class _HomeState extends State<Home> {
   }
 
   void _getList() async {
+
+    print('restore');
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+
+
     if (prefs.getStringList("key") != null) {
       schedules = prefs.getStringList("key");
-      if (prefs.getStringList('dates') != null) {
-        dates = prefs.getStringList('dates');
-      if(prefs.getStringList('times')!=null){
-        times=prefs.getStringList('times');
-      }
-      }
-      print("Restored");
     }
+    if (prefs.getStringList('dates') != null) {
+      dates = prefs.getStringList('dates');
+    }
+    if(prefs.getStringList('times')!=null){
+          times=prefs.getStringList('times');
+
+        }
+    delete();
+    _saveList(schedules, dates, times);
+
+    });
+  }
+
+  void delete(){
+  for (int i=0; i<dates.length;){
+    if(inputFormat.parse(dates[i]).isBefore(inputFormat.parse(format))){
+       dates.removeAt(i);
+       times.removeAt(i);
+       schedules.removeAt(i);
+    }
+    else{
+      i++;
+    }
+  }
+  }
+
+  void setState(fn){
+    super.setState(fn);
   }
 
   @override
   void initState() {
-    super.initState();
-    setState(() {});
     _getList();
-    setState(() {});
+    setState(() { });
+    super.initState();
   }
 
 
   @override
   Widget build(BuildContext context) {
+    print(loading);
     return Scaffold(
       key:_scaffold,
       backgroundColor: Colors.grey[600],
@@ -125,33 +154,33 @@ class _HomeState extends State<Home> {
 
                           ),
                           Row(
-                            children:<Widget>[
-                              Icon(
-                                Icons.calendar_today,
-                                size: 10.0,
-                                color: Colors.black,
-                              ),
-                            SizedBox(width: 5.0),
-                            Text(dates[index],
-                            style: TextStyle(
-                                fontSize: 10.0,
-                                color: Colors.white
-                            ),
-                          ),
-                              SizedBox(width:10.0),
-                              Icon(
-                                Icons.schedule,
-                                color: Colors.black,
-                                size: 10.0,
-                              ),
-                              Text(
-                                times[index],
-                                style: TextStyle(
-                                  fontSize: 10.0,
-                                  color: Colors.white
+                              children:<Widget>[
+                                Icon(
+                                  Icons.calendar_today,
+                                  size: 10.0,
+                                  color: Colors.black,
                                 ),
-                              )
-                         ]
+                                SizedBox(width: 5.0),
+                                Text(dates[index],
+                                  style: TextStyle(
+                                      fontSize: 10.0,
+                                      color: Colors.white
+                                  ),
+                                ),
+                                SizedBox(width:10.0),
+                                Icon(
+                                  Icons.schedule,
+                                  color: Colors.black,
+                                  size: 10.0,
+                                ),
+                                Text(
+                                  times[index],
+                                  style: TextStyle(
+                                      fontSize: 10.0,
+                                      color: Colors.white
+                                  ),
+                                )
+                              ]
                           ),
                         ]
                     )
@@ -195,6 +224,12 @@ class _HomeState extends State<Home> {
                     ),
                     actions: <Widget>[
                       FlatButton(
+                        child:Text('cancel'),
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      FlatButton(
                           child: Text('ok'),
                           onPressed: ()async {
                             if (schedule != '') {
@@ -216,9 +251,7 @@ class _HomeState extends State<Home> {
                               schedules.add(schedule);
                               dates.add(date_selected);
                               times.add(time);
-
-
-                              _saveList(schedules, dates,times);
+                               _saveList(schedules, dates,times);
                             });
                           }
 
@@ -239,6 +272,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-
-
