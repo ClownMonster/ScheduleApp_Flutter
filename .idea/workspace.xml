@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1239ab5d-7351-4cbb-b7a2-195ec053daf5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jM6LybQHrAbG1TwH9rnkWvoaJi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AndroidStudioProjects/scheduler" />
+    <property name="settings.editor.selected.configurable" value="project.scopes" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1239ab5d-7351-4cbb-b7a2-195ec053daf5" name="Default Changelist" comment="" />
+      <created>1603601561972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603601561972</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="754" y="297" width="472" height="520" key="FileChooserDialogImpl" timestamp="1603601911278">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="754" y="297" width="472" height="520" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1603601911278" />
+    <state x="580" y="300" width="819" height="514" key="NewModule_or_Project.wizard" timestamp="1603601886219">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="580" y="300" width="819" height="514" key="NewModule_or_Project.wizard/70.27.1850.1053@70.27.1850.1053" timestamp="1603601886219" />
+  </component>
+</project>
