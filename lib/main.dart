@@ -14,10 +14,13 @@ import 'date_picker.dart';
 import 'time_picker.dart';
 
 void main()=> runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home:Home()
 )
 
 );
+
+
 
 
 class Home extends StatefulWidget {
@@ -47,6 +50,8 @@ class _HomeState extends State<Home> {
     prefs.setStringList('times', times);
     print("Data Saved");
   }
+
+
 
   void _getList() async {
 
